@@ -1,0 +1,8 @@
+package com.app.ecom;
+
+public class Users {
+    private Long id;
+    private String firstName;
+    private String lastName;
+
+}
