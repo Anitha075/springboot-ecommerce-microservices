@@ -153,5 +153,3 @@ docker-compose up -d
 * CI/CD Pipeline
 * Kubernetes Deployment
 
-
- this project useful, please give it a star on GitHub.
