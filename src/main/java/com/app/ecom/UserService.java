@@ -1,5 +1,7 @@
 package com.app.ecom;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -7,8 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
+
+    @Autowired
+    private final UserRepository userRepository;
     private List<Users> usersList = new ArrayList<>();
+
 
 
     public List<Users> fetchAllUsers() {
