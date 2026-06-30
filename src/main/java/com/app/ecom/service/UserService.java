@@ -1,10 +1,11 @@
-package com.app.ecom;
+package com.app.ecom.service;
 
+import com.app.ecom.Repository.UserRepository;
+import com.app.ecom.model.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,36 +15,32 @@ public class UserService {
 
     @Autowired
     private final UserRepository userRepository;
-    private List<Users> usersList = new ArrayList<>();
+   // private List<Users> usersList = new ArrayList<>();
 
 
 
     public List<Users> fetchAllUsers() {
 
-        return usersList;
+        return userRepository.findAll();
     }
 
 
 
-    public List<Users> addUser(Users user) {
-        usersList.add(user);
-        return usersList;
+    public void addUser(Users user) {
+        userRepository.save(user);
     }
 
 
     public Optional<Users> fetchUserById(Long id) {
-        return usersList.stream()
-                .filter(users -> users.getId().equals(id))
-                .findFirst();
+        return userRepository.findById(id);
     }
     public boolean updateUser(Long id,Users updatedUser)
     {
-        return  usersList.stream()
-                .filter(users -> users.getId().equals(id))
-                .findFirst()
+        return userRepository.findById(id)
                 .map(existingUser->{
                     existingUser.setFirstName(updatedUser.getFirstName());
                     existingUser.setLastName(updatedUser.getLastName());
+                    userRepository.save(existingUser);
                     return true;
                 }).orElse(false);
     }
