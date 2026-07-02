@@ -3,13 +3,16 @@ package com.app.ecom.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 
 @NoArgsConstructor
 //@AllArgsConstructor
 @Data
-//@Entity(name = "user_table")
-@Entity
+@Entity(name = "user_table")
 public class Users {
 
 
@@ -25,8 +28,12 @@ public class Users {
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "address_id",referencedColumnName = "id")
-    private Address address;
+   private Address address;
 
-    //2:39
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
 }

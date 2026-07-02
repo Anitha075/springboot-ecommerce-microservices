@@ -7,17 +7,17 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Entity(name="user_table")
+@Entity(name="addresses")
 public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
-    private UserRole role=UserRole.CUSTOMER;
+    private String street;
+    private String city;
+    private String state;
+    private String country;
+    private String zipcode;
 
 
 
