@@ -3,7 +3,7 @@ package com.app.ecom.Controller;
 
 import com.app.ecom.dto.CartItemRequest;
 import com.app.ecom.model.CartItem;
-import com.app.ecom.service.cartService;
+import com.app.ecom.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CartController {
 
-    private final cartService cartService;
+    private final CartService cartService;
 
     @PostMapping
     public ResponseEntity<String> addToCart(

@@ -18,7 +18,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class cartService {
+public class CartService {
     private final ProductRepository productRepository;
 
     private final CartItemRepository cartItemRepository;
@@ -82,5 +82,10 @@ public class cartService {
                 .map(cartItemRepository::findByUser)
                 .orElseGet(List::of);
 
+    }
+
+    public void clearCart(String userId) {
+
+        userRepository.findById(Long.valueOf(userId)).ifPresent(cartItemRepository::deleteByUser);
     }
 }
