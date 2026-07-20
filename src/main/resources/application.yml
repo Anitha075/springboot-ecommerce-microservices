@@ -23,3 +23,26 @@ spring:
 
 server:
   port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans,health
+  info:
+    env:
+      enabled: true
+  server:
+    shutdown: graceful
+
+  endpoint:
+   health:
+     show-details: always
+   shutdown:
+     enabled: true
+
+info:
+  app:
+    name: MyNewApp
+    description: App built by us
+    version: 1.0.0
