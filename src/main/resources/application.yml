@@ -3,15 +3,10 @@ spring:
     name: ecom-application
 
   datasource:
-    url: jdbc:h2:mem:test
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    url: jdbc:postgresql://localhost:5432/ecomdb
+    username: postgres
+    password: anitha
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
@@ -20,6 +15,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  sql:
+    init:
+      mode: always
 
 server:
   port: 8080
@@ -29,17 +29,19 @@ management:
     web:
       exposure:
         include: beans,health
+
   info:
     env:
       enabled: true
+
   server:
     shutdown: graceful
 
   endpoint:
-   health:
-     show-details: always
-   shutdown:
-     enabled: true
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
 
 info:
   app:
